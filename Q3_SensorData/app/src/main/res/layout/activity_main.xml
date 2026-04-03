@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sensor Data"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- ====== ACCELEROMETER SECTION ====== -->
+    <!-- accelerometer = phone ka movement detect karta hai (hilana, ghoomana) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accelerometer"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- X axis - left right movement -->
+    <TextView
+        android:id="@+id/tvAccelX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X: 0.00"
+        android:textSize="16sp"/>
+
+    <!-- Y axis - up down movement -->
+    <TextView
+        android:id="@+id/tvAccelY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Y: 0.00"
+        android:textSize="16sp"/>
+
+    <!-- Z axis - forward backward movement -->
+    <TextView
+        android:id="@+id/tvAccelZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Z: 0.00"
+        android:textSize="16sp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- ====== LIGHT SENSOR SECTION ====== -->
+    <!-- light sensor = kitni roshni hai phone ke aas paas -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light Sensor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- lux value - jitni zyada roshni, utna bada number -->
+    <TextView
+        android:id="@+id/tvLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light: 0.00 lux"
+        android:textSize="16sp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- ====== PROXIMITY SENSOR SECTION ====== -->
+    <!-- proximity = koi cheez phone ke paas hai ya door -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Proximity Sensor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- cm mein distance ya Near/Far dikhayega -->
+    <TextView
+        android:id="@+id/tvProximity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Proximity: 0.00 cm"
+        android:textSize="16sp"/>
+
+</LinearLayout>
