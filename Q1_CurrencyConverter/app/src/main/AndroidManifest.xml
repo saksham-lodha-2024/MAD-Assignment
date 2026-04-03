@@ -16,10 +16,13 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--Settings screen register kiya, bina iske crash hoga-->
+        <activity android:name=".SettingsActivity" />
+
     </application>
 
 </manifest>
