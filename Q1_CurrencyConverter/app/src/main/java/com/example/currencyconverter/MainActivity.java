@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         String to = spinnerTo.getSelectedItem().toString();
 
         // Step 5: HashMap se rates lo
-        // rates.get("INR") = 83.0 return karega
+        // rates.get("INR") ye uski current rate dega
         double fromRate = rates.get(from);
         double toRate = rates.get(to);
 
