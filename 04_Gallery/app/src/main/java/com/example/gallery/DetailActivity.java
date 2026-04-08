@@ -68,9 +68,11 @@ public class DetailActivity extends AppCompatActivity {
                     java.util.Locale.getDefault()
             );
             String dateString = sdf.format(new java.util.Date(lastModified));
-            detailsToDisplay = "Name: " + name + "\n" +
-                    "Size: " + sizeString + "\n" +
-                    "Date: " + dateString;
+            detailsToDisplay =
+                            "Name: " + name + "\n" +
+                            "Path: " + uri.toString() + "\n" +
+                            "Size: " + sizeString + "\n" +
+                            "Date: " + dateString;
         }
         detailsText.setText(detailsToDisplay);
 

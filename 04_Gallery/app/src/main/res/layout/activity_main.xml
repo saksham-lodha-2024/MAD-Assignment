@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
+
     <TextView
         android:id="@+id/appNameHeader"
         android:layout_width="wrap_content"
@@ -40,10 +40,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/sub_title"
             android:textAlignment="center"
             android:textSize="14sp" />
+
+        <!--
+            Shows which folder is currently selected for saving photos.
+            Updated dynamically in Java when user picks a folder.
+            Default = "No folder selected"
+        -->
+        <TextView
+            android:id="@+id/tvSelectedFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="No folder selected"
+            android:textSize="13sp"
+            android:textColor="@android:color/darker_gray"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/takePhotoBtn"
