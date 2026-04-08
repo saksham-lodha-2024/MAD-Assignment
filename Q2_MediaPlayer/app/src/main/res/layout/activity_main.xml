@@ -42,7 +42,7 @@
         android:text="No file selected"
         android:textSize="14sp" />
 
-    <!-- Play, Pause, Stop buttons ek line mein horizontal -->
+    <!-- Play, Pause, Stop, Restart buttons ek line mein horizontal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,17 +55,17 @@
             android:id="@+id/btnPlay"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Play"
             android:src="@android:drawable/ic_media_play" />
 
-        <!-- pause btn-->
+        <!-- pause btn -->
         <ImageButton
             android:id="@+id/btnPause"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Pause"
             android:src="@android:drawable/ic_media_pause" />
@@ -75,13 +75,23 @@
             android:id="@+id/btnStop"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Stop"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <!-- restart btn — seekTo(0) se audio start se shuru hogi -->
+        <ImageButton
+            android:id="@+id/btnRestart"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Restart"
+            android:src="@android:drawable/ic_media_previous" />
 
     </LinearLayout>
 
-    <!-- vid ttitle-->
+    <!-- video title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

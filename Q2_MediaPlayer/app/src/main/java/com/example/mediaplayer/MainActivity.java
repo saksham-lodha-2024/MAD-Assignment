@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btnPlay, btnPause, btnStop;
+    private ImageButton btnPlay, btnPause, btnStop, btnRestart;
     private Button btnPickAudio;
     private TextView tvAudioName;
     private MediaPlayer mediaPlayer;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnPlayVideo;
     private VideoView videoView;
 
-    // file picker  ye phone ka file browser kholega
+    // file picker — ye phone ka file browser kholega
     private ActivityResultLauncher<String> audioPickerLauncher;
 
     @Override
@@ -36,20 +36,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // connect all views
         btnPickAudio = findViewById(R.id.btnPickAudio);
-        tvAudioName = findViewById(R.id.tvAudioName);
-        btnPlay = findViewById(R.id.btnPlay);
-        btnPause = findViewById(R.id.btnPause);
-        btnStop = findViewById(R.id.btnStop);
-        etVideoUrl = findViewById(R.id.etVideoUrl);
+        tvAudioName  = findViewById(R.id.tvAudioName);
+        btnPlay      = findViewById(R.id.btnPlay);
+        btnPause     = findViewById(R.id.btnPause);
+        btnStop      = findViewById(R.id.btnStop);
+        btnRestart   = findViewById(R.id.btnRestart);
+        etVideoUrl   = findViewById(R.id.etVideoUrl);
         btnPlayVideo = findViewById(R.id.btnPlayVideo);
-        videoView = findViewById(R.id.videoView);
+        videoView    = findViewById(R.id.videoView);
 
         // jab user file choose karega, ye code chalega
         audioPickerLauncher = registerForActivityResult(
                 new ActivityResultContracts.GetContent(),
                 uri -> {
-                    // uri is selected file ka address
                     if (uri != null) {
                         audioUri = uri;
                         tvAudioName.setText("File selected");
@@ -65,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        // pick button file browser kholega
+        // pick button — file browser kholega
         btnPickAudio.setOnClickListener(v -> {
             audioPickerLauncher.launch("audio/*");
         });
 
-        // play button  audio chalao
+        // play button — audio chalao
         btnPlay.setOnClickListener(v -> {
             if (mediaPlayer != null) {
                 mediaPlayer.start();
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // pause button audio roko
+        // pause button — audio roko
         btnPause.setOnClickListener(v -> {
             if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
@@ -88,17 +89,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-// stop button sab kuch reset karo nd file bhi hatao
+        // stop button — sab kuch reset karo
         btnStop.setOnClickListener(v -> {
             if (mediaPlayer != null) {
                 mediaPlayer.stop();
                 mediaPlayer.release();
                 mediaPlayer = null;
             }
-            //  reset
             audioUri = null;
             tvAudioName.setText("No file selected");
             Toast.makeText(this, "Stopped", Toast.LENGTH_SHORT).show();
+        });
+
+        // restart button — seekTo(0) se audio bilkul start se dobara chalega
+        // seekTo(0) = jump to 0 milliseconds = beginning of file
+        btnRestart.setOnClickListener(v -> {
+            if (mediaPlayer != null) {
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
+                Toast.makeText(this, "Restarted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Pick a file first!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // MediaController = built-in play/pause/seekbar for video
@@ -106,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
 
-        // play video button - URL se video stream karo
+        // play video button — URL se video stream karo
         btnPlayVideo.setOnClickListener(v -> {
             String url = etVideoUrl.getText().toString().trim();
             if (url.isEmpty()) {
@@ -119,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // jab user app band kare, MediaPlayer release karo
+    // jab user app band kare, MediaPlayer release karo — memory leak avoid karne ke liye
     @Override
     protected void onDestroy() {
         super.onDestroy();
